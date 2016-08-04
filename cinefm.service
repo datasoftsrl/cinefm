@@ -1,0 +1,18 @@
+[Unit]
+Description=CineFM web file manager
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nodejs /opt/cinefm/bin/cinefm.js
+WorkingDirectory=/opt/cinefm
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=cinefm
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

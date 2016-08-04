@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ title }} - {{ version }}</title>
+    <meta name="description" content="dual pane web file manager">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <link rel="stylesheet" href="vendor/normalize-css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="vendor/featherlight/release/featherlight.min.css">
+
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/featherlight/release/featherlight.min.js"></script>
+    <script src="vendor/js-url/url.min.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="vendor/html5shiv/dist/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="fm">
+      <div id="left-wrapper">
+        <div id="left-status">
+          <span id="left-path">/</span>
+        </div>
+        <header id="left-header">
+          <div class="scrollbar-spacer">
+            <span class="name-header truncate">Name</span>
+            <span class="type-header truncate">Type</span>
+            <span class="user-header truncate">User</span>
+            <span class="perms-header truncate">Perms</span>
+          </div>
+        </header>
+        <section id="left">
+        </section>
+      </div>
+      <div id="right-wrapper">
+        <div id="right-status">
+          <span id="right-path">/</span>
+          <span id="right-freespace">
+            <span>Free space:</span>
+            <span id="freespace">-.--</span>
+            <span>GB</span>
+          </span>
+        </div>
+        <header id="right-header">
+          <div class="scrollbar-spacer">
+            <span class="name-header truncate">Name</span>
+            <span class="type-header truncate">Type</span>
+            <span class="user-header truncate">User</span>
+            <span class="perms-header truncate">Perms</span>
+          </div>
+        </header>
+        <section id="right">
+          <div id="r-file-0">
+        </section>
+      </div>
+      <section id="buttons">
+        <div id="buttons-wrapper">
+          <button id="help-button" class="button truncate" name="help">Help</button>
+          <button id="copy-button" class="button truncate" name="copy" />Copy</button>
+          <button id="create-button" class="button truncate" name="new directory" />New folder</button>
+          <button id="delete-button" class="button truncate" name="delete" />Delete</button>
+        </div>
+      </section>
+    </div>
+
+  <div id="help-box" class="hide"></div>
+  <div id="copy-box" class="hide"></div>
+  <div id="create-box" class="hide"></div>
+  <div id="delete-box" class="hide"></div>
+  <div id="error-box" class="hide"></div>
+
+  <!-- load socket.io goodie -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+  </body>
+</html>

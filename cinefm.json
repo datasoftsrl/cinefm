@@ -1,0 +1,14 @@
+{
+  // port where to start server
+  "port": 8080,
+  // root where to chroot left/right panel (no trailing /)
+  "root-left": "/",
+  "root-right": "/",
+  // if panel left/right cannot be modified
+  "ro-left": false,
+  "ro-right": false,
+  // whether to show hidden files (.config, .xinit, etc)
+  "show-hidden": false,
+  // path where to place logfile
+  "log-path": "/var/log/cinefm/cinefm.log"
+}
