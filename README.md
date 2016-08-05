@@ -2,7 +2,7 @@
 
 ## What is it?
 
-CineFM is a web based file manager, built around new tecnologies¸ such as
+CineFM is a web based file manager, built around new tecnologies, such as
 NodeJS, HTML5 and CSS3.
 
 ## Features
