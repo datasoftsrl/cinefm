@@ -45,7 +45,7 @@ to `/mnt/disk-sdXn`, starting from a specified letter.
 System can be installed and a starting letter can be choosed with:
 
 ```shell
-$ python3 udev-drives.py
+$ curl -sL https://raw.githubusercontent.com/datasoftsrl/cinefm/master/udev-drives.py | python3 -
 Automounting from /dev/sdX onwards, starting from letter (default: b): f
 ```
 
