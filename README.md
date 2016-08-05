@@ -37,6 +37,20 @@ $ systemctl start cinefm
 Now, server will be available at the previously specified port (by default
 8080).
 
+## Automounting drives
+
+There is an option to use `udev` to automount, for example, device `/dev/sdXn`
+to `/mnt/disk-sdXn`, starting from a specified letter.
+
+System can be installed and a starting letter can be choosed with:
+
+```shell
+$ python3 udev-drives.py
+Automounting from /dev/sdX onwards, starting from letter (default: b): f
+```
+
+Now volumes starting from `/dev/sdf` will be mounted under `/mnt`.
+
 ## License
 
 Software is provided under [MIT License](https://opensource.org/licenses/MIT).
