@@ -96,7 +96,8 @@ if [[ $EUID -eq 0 ]]; then
       npm install "."
       bower --allow-root install
       mkdir -p "/var/log/cinefm"
-      install -g root -o root -m 644 "cinefm.json" "${HOME}/.cinefm.json"
+      chown ${USER}:${USER} "/var/log/cinefm"
+      install -g ${USER} -o ${USER} -m 644 "cinefm.json" "${HOME}/.cinefm.json"
       ok
 
       log "Installing CineFM utility and CineFM systemd service..."

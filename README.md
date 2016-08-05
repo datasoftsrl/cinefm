@@ -28,6 +28,15 @@ $ curl -sL https://raw.githubusercontent.com/datasoftsrl/cinefm/master/install.s
 After installation is completed, remeber to edit configuration at
 `$HOME/.cinefm.json`.
 
+To start the file manager service, use this `systemd` command:
+
+```shell
+$ systemctl start cinefm
+```
+
+Now, server will be available at the previously specified port (by default
+8080).
+
 ## License
 
 Software is provided under [MIT License](https://opensource.org/licenses/MIT).
