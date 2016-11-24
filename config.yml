@@ -1,0 +1,22 @@
+# DO NOT USE TABS
+
+# title of application
+title: "CineFM"
+# port where to start server
+port: 8080
+
+# root where to chroot left/right panel (no trailing /)
+root-left: "/"
+root-right: "/"
+# if panel left/right cannot be modified
+ro-left: false
+ro-right: false
+# whether to show hidden files (.config, .xinit, etc)
+show-hidden: false
+
+# show the poweroff button
+poweroff-button: false
+
+# path where to place logfile
+log-path: "/tmp/cinefm.log"
+# log_path: "/var/log/cinefm/cinefm.log"
