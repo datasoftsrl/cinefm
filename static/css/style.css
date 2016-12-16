@@ -348,3 +348,16 @@ span {
     width: 40%;
   }
 }
+
+/***** poweroff *****/
+.poweroff-buttons-wrapper {
+  width: 75vw !important;
+}
+
+.red {
+  background-color: rgb(234, 67, 53);
+}
+
+.red:hover {
+  background-color: rgb(241, 131, 122);
+}

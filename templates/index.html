@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ title }} - {{ version }}</title>
+    <meta name="author" content="DataSoft Srl">
     <meta name="description" content="dual pane web file manager">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -66,10 +67,19 @@
       </div>
       <section id="buttons">
         <div id="buttons-wrapper">
-          <button id="help-button" class="button truncate" name="help">Help</button>
-          <button id="copy-button" class="button truncate" name="copy" />Copy</button>
-          <button id="create-button" class="button truncate" name="new directory" />New folder</button>
-          <button id="delete-button" class="button truncate" name="delete" />Delete</button>
+          <button id="help-button" class="button truncate"
+            name="help">Help</button>
+          <button id="copy-button" class="button truncate"
+            name="copy">Copy</button>
+          <button id="create-button" class="button truncate"
+            name="new directory">New folder</button>
+          <button id="delete-button" class="button truncate"
+            name="delete">Delete</button>
+        {%- if poweroff %}
+          <button id="poweroff-button" class="button truncate red"
+            onclick="offButton('{{ poweroff }}')"
+            name="poweroff">NAS Shutdown</button> 
+        {%- endif %}
         </div>
       </section>
     </div>

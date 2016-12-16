@@ -23,6 +23,9 @@ $(document).ready(function() {
     $('.scrollbar-spacer').width($('.scrollbar-spacer').width() - offset);
   });
 
+  // resize buttons when poweroff is active
+  poweroffActive();
+
   // tie every button with its function
   helpButton();
   copyButton();
@@ -191,6 +194,15 @@ function scrollbarWidth() {
   $(scrollDiv).remove();
 
   return width;
+}
+
+/**
+ * Resize other buttons when poweroff is active.
+ */
+function poweroffActive() {
+  if (document.getElementById('poweroff-button')) {
+    $('#buttons-wrapper').addClass('poweroff-buttons-wrapper');
+  }
 }
 
 /**
@@ -467,6 +479,10 @@ function delButton() {
     }
 
   });
+}
+
+function offButton(url) {
+  window.open(url, '_blank');
 }
 
 /*****************

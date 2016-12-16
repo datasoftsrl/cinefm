@@ -15,8 +15,8 @@ ro-right: false
 show-hidden: false
 
 # show the poweroff button
-poweroff-button: false
+#poweroff-button: false
+poweroff-button: "http://localhost:8081"
 
 # path where to place logfile
-log-path: "/tmp/cinefm.log"
-# log_path: "/var/log/cinefm/cinefm.log"
+log-path: "/var/log/cinefm/cinefm.log"
