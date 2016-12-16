@@ -27,7 +27,7 @@ function remind {
   echo >&5
   tput bold >&5
   tput blink >&5
-  echo "Remeber to edit config at '${HOME}/.cinefm.json'." >&5
+  echo "Remeber to edit config at '${TARGET}/config.yml'." >&5
   tput sgr0 >&5
   echo >&5
 }
@@ -97,7 +97,6 @@ if [[ $EUID -eq 0 ]]; then
       bower --allow-root install
       mkdir -p "/var/log/cinefm"
       chown ${USER}:${USER} "/var/log/cinefm"
-      install -g ${USER} -o ${USER} -m 644 "cinefm.json" "${HOME}/.cinefm.json"
       ok
 
       log "Installing CineFM utility and CineFM systemd service..."
@@ -116,7 +115,7 @@ EOF
       systemctl enable "cinefm.service"
       ok
 
-      # remind of .cinefm.json
+      # remind of config.yml
       remind
 
       cd ${OLD_CWD}
