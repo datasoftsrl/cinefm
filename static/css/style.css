@@ -125,7 +125,7 @@ span {
   height: 100%;
 }
 
-.name-header, .type-header, .user-header, .perms-header {
+.name-header, .type-header, .size-header, .perms-header {
   height: 100%;
 
   margin: 0px;
@@ -142,7 +142,7 @@ span {
   text-transform: uppercase;
 }
 
-.name-header:before, .type-header:before, .user-header:before, .perms-header:before {
+.name-header:before, .type-header:before, .size-header:before, .perms-header:before {
   display: inline-block;
 
   height: 100%;
@@ -163,7 +163,7 @@ span {
   border-right: 3px solid rgb(242, 242, 242);
 }
 
-.user-header {
+.size-header {
   width: calc(10% - 3px);
 
   border-right: 3px solid rgb(242, 242, 242);
@@ -201,7 +201,7 @@ span {
   border: 0px;
 }
 
-.name, .type, .user, .perms {
+.name, .type, .size, .perms {
   display: inline-block;
 
   margin: 0px;
@@ -228,7 +228,7 @@ span {
   border-right: 1px dotted black;
 }
 
-.user {
+.size {
   width: calc(10% - 1px);
 
   border-right: 1px dotted black;

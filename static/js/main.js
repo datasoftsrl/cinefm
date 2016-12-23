@@ -574,7 +574,7 @@ function populatePanel(files, panel) {
   // clear current files
   $(panelId).empty();
 
-  function createFile(i, path, name, type, user, perms) {
+  function createFile(i, path, name, type, size, perms) {
     var file = '<div id="r-file-' + i + '">' +
       '<span class="name">' +
       '<a href="/?path=' + encodeURIComponent(btoa(path)) +
@@ -592,14 +592,14 @@ function populatePanel(files, panel) {
 
     file +=  '</span>' +
       '<span class="type">' + type + '</span>' +
-      '<span class="user">' + t(user, 9, false) + '</span>' +
+      '<span class="size">' + t(size, 9, false) + '</span>' +
       '<span class="perms">' + perms + '</span></div>';
 
     return file;
   }
 
   files.forEach(function(elem, i, array) {
-    $(panelId).append(createFile(i, elem.path, elem.name, elem.type, elem.user,
+    $(panelId).append(createFile(i, elem.path, elem.name, elem.type, elem.size,
       elem.perms));
   });
 }
