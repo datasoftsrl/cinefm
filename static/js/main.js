@@ -3,9 +3,13 @@
 // get global socket
 var socket = io();
 
-// cache for copying files
+// cache for copying local files
 // object of type { name: id }
 var copyCache = {};
+
+// cache for copying ftp files
+// object of type { name: id }
+var ftpCopyCache = {};
 
 // for jquery: execute when the document is ready to be processed
 $(document).ready(function() {
@@ -169,6 +173,95 @@ $(document).ready(function() {
     }
   });
 
+  // ftp copy requested
+  socket.on('ftpcp-progress', function(data) {
+    // insert progressbar name (tied to filename) into cache
+    // if present use the one present
+    var idEnc;
+    if (ftpCopyCache.hasOwnProperty(data.name)) {
+      idEnc = ftpCopyCache[data.name];
+    } else {
+      idEnc = 'copy-' + getRandomInt(1, 9999);
+      ftpCopyCache[data.name] = idEnc;
+    }
+
+    // if progressbar exists, update it, else create it
+    // same for elapsed time and speed
+    if ($('#' + idEnc).length) {
+      $('#' + idEnc).attr('value', data.percent);
+      $('#' + idEnc + '-eta').html(data.eta);
+      $('#' + idEnc + '-sp').html(data.speed);
+    } else {
+      $('#copy-prog').append(
+        '<label style="display: block; float: left; clear: right;" for="' +
+          idEnc + '">' + t(data.name) + '</label>' +
+        '<span style="display: block; float: right; clear: left;"">' +
+          '<span id="' + idEnc + '-eta">' + data.eta + '</span> | ' +
+          '<span id="' + idEnc + '-sp">' + data.speed + '</span></span>' +
+        '<br style="margin-bottom: 10px;" />\n' +
+        '<progress id="' + idEnc + '" name="' + idEnc + '" ' +
+          'value="' + data.percent + '" max="100" style="width: 400px;">' +
+          '</progress>\n'
+      );
+    }
+
+    // open lightbox if not already open
+    if ($.featherlight.current() === null) {
+      // show lightbox
+      var content = $.featherlight('#copy-box', {
+        closeTrigger: null,
+        closeOnClick: false,
+        closeOnEsc: false,
+        closeIcon: '',
+        persist: true,
+        afterClose: function(event) {
+          // append to body again
+          $('body').append(content.$content);
+        }
+      });
+    }
+  });
+
+  socket.on('ftpcp-status', function(data) {
+    // decrement number of copied files in copy cache
+    ftpCopyCache['__num'] -= 1;
+
+    if (data.status == 'error') {
+      // if error set every progressbar to 0
+      for (var key in ftpCopyCache) {
+        if (key != '__num') {
+          var idEnc = ftpCopyCache[key];
+          $('#' + idEnc).attr('value', 0);
+        }
+      }
+    } else if (data.status == 'copied') {
+      // if success set every progressbar to 100
+      for (var key in ftpCopyCache) {
+        if (key != '__num') {
+          var idEnc = ftpCopyCache[key];
+          $('#' + idEnc).attr('value', 100);
+        }
+      }
+    }
+
+    // append status to copy-status
+    $('#copy-status').append(data.message);
+
+    // add button to close if number of copied files in copy cache is 0
+    if (ftpCopyCache['__num'] == 0) {
+      $('#copy-box').append(
+        '<button id="copy-close" style="display: block; float: right;" ' +
+          'name="copy-close">Close</button>'
+      );
+      $('#copy-close').click(function(event) {
+        event.preventDefault();
+
+        // close lightbox
+        $.featherlight.current().close();
+      });
+    }
+  });
+
   // ask when closing window
   askClose();
 });
@@ -300,8 +393,10 @@ function copyButton() {
       '</div>'
     );
 
-    // clear copy cache
+    // clear local copy cache
     copyCache = {};
+    // clear ftp copy cache
+    ftpCopyCache = {};
 
     // gather all selected items
     var selected = [];
@@ -315,8 +410,10 @@ function copyButton() {
     if (selected.length > 0) {
       // something is selected
 
-      // save number of selected into copy cache
+      // save number of selected into local copy cache
       copyCache['__num'] = selected.length;
+      // save number of selected into ftp copy cache
+      ftpCopyCache['__num'] = selected.length;
 
       // retrieve panel and prefix
       var panelSrc = $.url('?panel', $('.selected > span > a')

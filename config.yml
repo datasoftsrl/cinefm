@@ -13,10 +13,22 @@ ro-left: false
 ro-right: false
 # whether to show hidden files (.config, .xinit, etc)
 show-hidden: false
+# ftp folder relative to root-*
+ftp-left:
+  # folder relative to root, where ftp is mounted
+  folder: "ftp"
+  host: "ftp://localhost:21/"
+  user: "anonymous"
+  passwd: "anonymous"
+#ftp-right:
+  # folder relative to root where ftp is mounted
+  #folder: "ftp"
+  #host: "ftp://localhost:21/"
+  #user: "admin"
+  #passwd: "admin"
 
 # show the poweroff button
-#poweroff-button: false
-poweroff-button: "http://localhost:8081"
+poweroff-button: false
 
 # path where to place logfile
 log-path: "/var/log/cinefm/cinefm.log"
