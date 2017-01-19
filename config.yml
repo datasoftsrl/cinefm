@@ -16,16 +16,20 @@ show-hidden: false
 # ftp folder relative to root-*
 ftp-left:
   # folder relative to root, where ftp is mounted
-  folder: "ftp"
-  host: "ftp://localhost:21/"
-  user: "anonymous"
-  passwd: "anonymous"
+  - folder: "ftp"
+    host: "ftp://localhost:21/"
+    user: "anonymous"
+    passwd: "anonymous"
+  #- folder: "ftp1"
+  #  host: "ftp://localhost:2121/"
+  #  user: "anonymous"
+  #  passwd: "anonymous"
 #ftp-right:
   # folder relative to root where ftp is mounted
-  #folder: "ftp"
-  #host: "ftp://localhost:21/"
-  #user: "admin"
-  #passwd: "admin"
+  #- folder: "ftp"
+  #  host: "ftp://localhost:21/"
+  #  user: "admin"
+  #  passwd: "admin"
 
 # show the poweroff button
 poweroff-button: false
