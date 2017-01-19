@@ -111,6 +111,7 @@ cd \${WD}
 cd \${OLD_PWD}
 EOF
       chmod 755 ${BIN}
+      chmod +x "${TARGET}/udev-restart.sh"
       install -g root -o root -m 644 "cinefm.service" "/etc/systemd/system/"
       systemctl enable "cinefm.service"
       ok

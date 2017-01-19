@@ -3,6 +3,7 @@ Description=CineFM web file manager
 
 [Service]
 Type=simple
+ExecStartPre=/opt/cinefm/udev-restart.sh
 ExecStart=/usr/bin/nodejs /opt/cinefm/bin/cinefm.js
 WorkingDirectory=/opt/cinefm
 Restart=always
