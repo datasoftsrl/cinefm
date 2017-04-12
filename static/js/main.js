@@ -338,6 +338,24 @@ function highlightFiles() {
   });
 }
 
+/**
+ * Show statusbar at the top left of viewport.
+ *
+ * < text: text to show into statusbar
+ */
+function showStatusbar(text) {
+  $('#status-bar').text(text);
+  $('#status-bar').removeClass('hide');
+}
+
+/**
+ * Hide statusbar from viewport.
+ */
+function hideStatusbar() {
+  $('#status-bar').addClass('hide');
+}
+
+
 /***********
  * BUTTONS *
  ***********/
@@ -659,6 +677,7 @@ function dirLinks() {
   });
 }
 
+
 /**
  * Populate a panel with files.
  *
@@ -670,13 +689,16 @@ function populatePanel(files, panel) {
 
   // clear current files
   $(panelId).empty();
-
+  // clear statusbar
+  hideStatusbar();
+  
   function createFile(i, path, name, type, size, perms) {
-    var file = '<div id="r-file-' + i + '">' +
+    var file = '<div id="r-file-' + i + '" ' +
+      'onmouseenter="showStatusbar(\'' + name + '\')" ' +
+      'onmouseleave="hideStatusbar()">' +
       '<span class="name">' +
       '<a href="/?path=' + encodeURIComponent(btoa(path)) +
       '&panel=' + panel + '" ';
-
 
     // if dir insert a link else not
     if (type == 'dir') {
@@ -779,7 +801,7 @@ function t(str, maxLen, dots) {
   if (typeof str != 'string') {
     return str;
   }
-  var suffix = str.length > maxLen && dots? '...' : '';
+  var suffix = str.length > maxLen && dots? '…' : '';
   return suffix + str.substring(str.length - maxLen);
 }
 

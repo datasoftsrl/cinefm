@@ -287,6 +287,19 @@ span {
   background-color: rgb(34, 77, 175);
 }
 
+#status-bar {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+
+  padding: 2px 4px;
+  border-top-right-radius: 3px;
+  background-color: rgb(230, 230, 230);
+  color: rgb(8, 29, 76);
+
+  word-wrap: break-word;
+}
+
 .hide {
   display: none;
 }
