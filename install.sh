@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # redirect stdout
 exec 5>&1
@@ -40,7 +40,7 @@ if [[ $EUID -eq 0 ]]; then
     source ${RELEASE}
 
     # check if debian 8
-    if [[ ${ID} == "debian" ]] && [[ ${VERSION_ID} == "8" ]]; then
+    if [[ ${ID} == "debian" ]]; then
 
       log "Installing NodeJS version 6..."
       # if nodejs already installed
@@ -48,7 +48,7 @@ if [[ $EUID -eq 0 ]]; then
       if [[ $? -eq 1 ]]; then
         apt-get update
         apt-get install -y curl
-        curl -sL https://deb.nodesource.com/setup_6.x | bash -
+        curl -sL https://deb.nodesource.com/setup_12.x | bash -
         apt-get install -y nodejs
       fi
       # check if nodejs has been installed
@@ -122,7 +122,7 @@ EOF
       cd ${OLD_CWD}
 
     else
-      error "Not a Debian 8 (jessie) system."
+      error "Not a Debian system."
       exit 255
     fi
 
