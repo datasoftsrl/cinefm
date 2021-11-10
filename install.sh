@@ -52,7 +52,7 @@ if [[ $EUID -eq 0 ]]; then
         apt-get install -y nodejs
       fi
       # check if nodejs has been installed
-      type nodejs
+      type node
       if [[ $? -eq 1 ]]; then
         error "NodeJS has not been installed."
         exit 255
