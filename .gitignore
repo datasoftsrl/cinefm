@@ -39,3 +39,5 @@ jspm_packages
 
 # Vendor bower folder
 static/vendor
+
+.history/

@@ -26,8 +26,8 @@ def add_udev_rule(start_letter=START_LETTER, path=UDEV_RULES_FILE):
   # add start lecter to file
   rules = [
     '''ACTION=="add", KERNEL=="sd[{0}-z][0-9]", RUN+="/bin/mkdir -p /mnt/disk-%k"''',
-    '''ACTION=="add", KERNEL=="sd[{0}-z][0-9]", RUN+="/bin/mount -t auto -o sync,dirsync,noexec,nosuid /dev/%k /mnt/disk-%k", OPTIONS+="last_rule"''',
-    '''ACTION=="remove", KERNEL=="sd[{0}-z][0-9]", RUN+="/bin/umount -l /mnt/disk-%k"''',
+    '''ACTION=="add", KERNEL=="sd[{0}-z][0-9]", RUN+="/usr/bin/systemd-mount -t auto --no-block automount=yes --collect /dev/%k /mnt/disk-%k", OPTIONS+="last_rule"''',
+    '''ACTION=="remove", KERNEL=="sd[{0}-z][0-9]", RUN+="/usr/bin/systemd-umount /mnt/disk-%k"''',
     '''ACTION=="remove", KERNEL=="sd[{0}-z][0-9]", RUN+="/bin/rmdir /mnt/disk-%k", OPTIONS+="last_rule"'''
   ]
   rules_string = '\n'.join(rules).format(start_letter)
