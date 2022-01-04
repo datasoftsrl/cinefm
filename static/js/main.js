@@ -131,7 +131,7 @@ $(document).ready(function() {
         closeOnClick: false,
         closeOnEsc: false,
         closeIcon: '',
-        persist: true,
+        persist: false,
         afterClose: function(event) {
           // append to body again
           $('body').append(content.$content);
@@ -213,7 +213,7 @@ $(document).ready(function() {
         closeOnClick: false,
         closeOnEsc: false,
         closeIcon: '',
-        persist: true,
+        persist: false,
         afterClose: function(event) {
           // append to body again
           $('body').append(content.$content);
@@ -386,7 +386,7 @@ function helpButton() {
       closeOnClick: false,
       closeOnEsc: false,
       closeIcon: '',
-      persist: true,
+      persist: false,
       afterClose: function(event) {
         // append to body again
         $('body').append(content.$content);
@@ -485,7 +485,7 @@ function dirButton() {
       closeOnClick: false,
       closeOnEsc: false,
       closeIcon: '',
-      persist: true,
+      persist: false,
       afterClose: function(event) {
         // append to body again
         $('body').append(content.$content);
@@ -560,7 +560,7 @@ function delButton() {
 
       // ask if sure: fullfill delete-box and display it
       var content = $.featherlight('#delete-box', {
-        persist: true,
+        persist: false,
         afterClose: function(event) {
           // append to body again
           $('body').append(content.$content);
@@ -638,7 +638,7 @@ function error(message) {
     closeOnClick: false,
     closeOnEsc: false,
     closeIcon: '',
-    persist: true,
+    persist: false,
     afterClose: function(event) {
       // append to body again
       $('body').append(content.$content);
