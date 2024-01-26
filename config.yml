@@ -11,6 +11,9 @@ root-right: "/"
 # if panel left/right cannot be modified
 ro-left: false
 ro-right: false
+# sorting criteria for panel left/right (can be 'name', 'date')
+sort-left: name
+sort-right: date
 # whether to show hidden files (.config, .xinit, etc)
 show-hidden: false
 # ftp folder relative to root-*
