@@ -692,7 +692,7 @@ function populatePanel(files, panel) {
   // clear statusbar
   hideStatusbar();
   
-  function createFile(i, path, name, type, size, perms) {
+  function createFile(i, path, name, type, size, perms, mtime) {
     var file = '<div id="r-file-' + i + '" ' +
       'onmouseenter="showStatusbar(\'' + name + '\')" ' +
       'onmouseleave="hideStatusbar()">' +
@@ -712,14 +712,14 @@ function populatePanel(files, panel) {
     file +=  '</span>' +
       '<span class="type">' + type + '</span>' +
       '<span class="size">' + t(size, 9, false) + '</span>' +
-      '<span class="perms">' + perms + '</span></div>';
+      '<span class="mtime">' + moment(mtime).format('DD.MM.YY HH:MM:SS') + '</span></div>';
 
     return file;
   }
 
   files.forEach(function(elem, i, array) {
     $(panelId).append(createFile(i, elem.path, elem.name, elem.type, elem.size,
-      elem.perms));
+      elem.perms, elem.mtime));
   });
 }
 
