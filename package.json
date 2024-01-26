@@ -1,6 +1,6 @@
 {
   "name": "cinefm",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Web based file manager",
   "dependencies": {
     "chokidar": "^1.6.0",
@@ -20,7 +20,7 @@
   "private": true,
   "main": "./bin/cinefm.js",
   "author": "Riccardo Macoratti <r.macoratti@gmx.co.uk>",
-  "os": "linux",
+  "os": ["linux"],
   "scripts": {
     "start": "node bin/cinefm.js"
   }
