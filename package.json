@@ -8,7 +8,7 @@
     "jquery-modal": "^0.7.0",
     "n-readlines": "^0.2.5",
     "nodejs-fs-utils": "^1.0.26",
-    "nunjucks": "^2.4.2",
+    "nunjucks": "^3.2.4",
     "progress-stream": "^1.2.0",
     "rsync": "^0.5.0",
     "socket.io": "^1.4.5",
