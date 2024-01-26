@@ -39,3 +39,6 @@ jspm_packages
 
 # Vendor bower folder
 static/vendor
+
+# VSCode history plugin
+.history/
