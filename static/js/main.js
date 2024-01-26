@@ -693,6 +693,18 @@ function populatePanel(files, panel) {
   hideStatusbar();
   
   function createFile(i, path, name, type, size, perms, mtime) {
+    if (name === '..') {
+        return '<div id="r-file-' + i + '" ' +
+        'onmouseenter="showStatusbar(\'' + name + '\')" ' +
+        'onmouseleave="hideStatusbar()">' +
+        '<span class="name">' +
+        '<a href="/?path=' + encodeURIComponent(btoa(path)) +
+        '&panel=' + panel + '" >' + t(name, 68) + '</a></span>' +
+        '<span class="type">' + type + '</span>' +
+        '<span class="size">&nbsp;</span>' +
+        '<span class="mtime">&nbsp;</span></div>';
+    }
+
     var file = '<div id="r-file-' + i + '" ' +
       'onmouseenter="showStatusbar(\'' + name + '\')" ' +
       'onmouseleave="hideStatusbar()">' +
@@ -712,7 +724,7 @@ function populatePanel(files, panel) {
     file +=  '</span>' +
       '<span class="type">' + type + '</span>' +
       '<span class="size">' + t(size, 9, false) + '</span>' +
-      '<span class="mtime">' + moment(mtime).format('DD.MM.YY HH:MM:SS') + '</span></div>';
+      '<span class="mtime">' + formatDate(mtime) + '</span></div>';
 
     return file;
   }
@@ -853,4 +865,18 @@ function getPath(panel) {
  */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/**
+ * Formats a date, returning an invalid string if input date is not valid
+ *
+ * < date: date to format
+ *
+ * > formatted date
+ */
+function formatDate(date) {
+    var momentDate = moment(date);
+    
+    if (!momentDate.isValid()) return '--.--.-- ..:..:..';
+    return momentDate.format('DD.MM.YY HH:MM:SS')
 }
