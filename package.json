@@ -4,7 +4,7 @@
   "description": "Web based file manager",
   "dependencies": {
     "chokidar": "^1.6.0",
-    "express": "^4.14.0",
+    "express": "^4.19.2",
     "jquery-modal": "^0.7.0",
     "n-readlines": "^0.2.5",
     "nodejs-fs-utils": "^1.0.26",
