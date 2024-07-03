@@ -11,8 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/bin/cinefm.js",
-            "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v14.16.1/bin/node"
+            "program": "${workspaceFolder}/bin/cinefm.js"
         }
     ]
 }
