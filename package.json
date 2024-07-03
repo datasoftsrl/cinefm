@@ -1,6 +1,6 @@
 {
   "name": "cinefm",
-  "version": "2.5.3",
+  "version": "2.5.4",
   "description": "Web based file manager",
   "dependencies": {
     "chokidar": "^1.6.0",
